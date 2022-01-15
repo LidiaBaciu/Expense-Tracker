@@ -1,16 +1,22 @@
-from flask import Flask, request
-# from flask_sqlalchemy import SQLAlchemy
-
+import sqlite3
+from flask import Flask, render_template
+import sqlite3
 
 app = Flask(__name__)
 
-# app.config.from_object(os.environ['APP_SETTINGS'])
-# app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-# db = SQLAlchemy(app)
+def get_db_connection():
+    connection = sqlite3.connect('database.db')
+    # Allow name-based access to columns
+    connection.row_factory = sqlite3.Row
+    return connection
+
 
 @app.route("/")
-def hello():
-    return "Hello World!"
+def index():
+    conn = get_db_connection()
+    users = conn.execute('SELECT * FROM user').fetchall()
+    conn.close()
+    return render_template('index.html', users=users)
 
 @app.route("/user/income/<name>")
 def get_income_type(name):
