@@ -1,0 +1,13 @@
+name: daroly-et
+
+channels:
+  - default
+  - anaconda
+  - conda-forge
+
+dependencies:
+  - python=3.9
+  - Flask=2.0
+  - Flask-SQLAlchemy=2.5
+  - Flask-Script=2.0
+  - Flask-Migrate=3.1
