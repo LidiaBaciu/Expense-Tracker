@@ -16,6 +16,7 @@ def index():
     conn = get_db_connection()
     users = conn.execute('SELECT * FROM user').fetchall()
     conn.close()
+    print('added some changes here to check git changing username')
     return render_template('index.html', users=users)
 
 @app.route("/user/income/<name>")
