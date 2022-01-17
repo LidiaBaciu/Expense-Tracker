@@ -17,6 +17,8 @@ def index():
     conn.close()
     return render_template('index.html', users=users)
 
+# let's see now
+
 @app.route("/user/income/<name>")
 def get_income_type(name):
     return "name: {}".format(name)
