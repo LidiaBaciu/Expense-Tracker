@@ -7,7 +7,8 @@ with open('schema.sql') as f:
 
 cursor = connection.cursor()
 
-cursor.execute("INSERT INTO user (username, password, email, birthday) VALUES (?, ?, ?, ?)", ("lidia901", "password", "lidia.baciu97@gmail.com", "19.10.1997"))
+cursor.execute("INSERT INTO income_type (income_type) VALUES (?)", ("active",))
+cursor.execute("INSERT INTO income_type (income_type) VALUES (?)", ("passive",))
 
 connection.commit()
 connection.close()    

@@ -10,7 +10,6 @@ def get_db_connection():
     connection.row_factory = sqlite3.Row
     return connection
 
-
 @app.route("/")
 def index():
     conn = get_db_connection()
