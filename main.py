@@ -1,27 +1,8 @@
-import sqlite3
-from flask import Flask, render_template
-import sqlite3
+from website import create_app
 
-app = Flask(__name__)
 
-def get_db_connection():
-    connection = sqlite3.connect('database.db')
-    # Allow name-based access to columns
-    connection.row_factory = sqlite3.Row
-    return connection
+app = create_app()
 
-@app.route("/")
-def index():
-    conn = get_db_connection()
-    users = conn.execute('SELECT * FROM user').fetchall()
-    conn.close()
-    return render_template('index.html', users=users)
 
-# let's see now
-
-@app.route("/user/income/<name>")
-def get_income_type(name):
-    return "name: {}".format(name)
-
-if __name__ == "__main__":
-    app.run(host='0.0.0.0')
+if __name__ == '__main__':
+    app.run(debug=True)
